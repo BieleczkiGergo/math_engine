@@ -44,23 +44,29 @@ class mElement:
                             if type(self.exp) == int:
                                 if type(other.exp) == str:
                                     return False
-                                else:
-                                    #Temporary
+                                else: #other.exp.type == mElement
+                                    #Simplify the mElement, then if the other element
+                                    #is of the same type, compare, else: return false
+                                    #Simplify function is not ready yet
                                     return False
                             elif type(self.exp) == str:
                                 if type(other.exp) == int:
                                     return False
-                                else: #other.type = mElement
-                                    #Temporary
+                                else: #other.exp.type = mElement
+                                    #Simplify the mElement, then if the other element
+                                    #is of the same type, compare, else: return false
+                                    #Simplify function is not ready yet
                                     return False
-                            else: #self.type = mElement
-                                if type(other.exp) == int:
-                                    #Temporary
-                                    return False
-                                else: #other.type = str
-                                    #Temporary
-                                    return False
-                        
+                            else: #self.exp.type = mElement
+                                #Simplify the mElement, then if the other element
+                                #is of the same type, compare, else: return false
+                                #Simplify function is not ready yet
+                                return False
+                    elif type(self.den) == str:
+                        return self.den == other.den
+                    else: #both.den.type == mElement
+                        return self.den == other.den
+
         else:
             return False
 
@@ -71,10 +77,19 @@ class mElement:
         return (self.base / self.den) ** self.exp
 
     def countable(self):
+        if type(self.base) == int and type(self.den) == int and type(self.den) == int:
+            return True
+
+    def simplify(self):
         pass
 
-element1 = mElement(base=4, den=4, exp=4)
-element2 = mElement(base=5, den=5, exp=4)
+
+#define test elements
+element1 = mElement(base=4, exp=4)
+element2 = mElement(base=5, exp=4)
+element1.den = mElement(base=3, den='x', exp=2)
+element2.den = mElement(base=3, den='x', exp=2)
+
 
 print(element1 == element2)
 #print(type(element1))
