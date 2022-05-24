@@ -1,9 +1,8 @@
 #!/bin/python3
 #This file is for defining the methods and classes
 
-from typing import Type
-
 from numpy import exp
+from regex import F
 
 
 ADDITION = True
@@ -41,7 +40,26 @@ class mElement:
                                 return self.exp == other.exp
                             else:
                                 return False
-                        
+                        else:
+                            if type(self.exp) == int:
+                                if type(other.exp) == str:
+                                    return False
+                                else:
+                                    #Temporary
+                                    return False
+                            elif type(self.exp) == str:
+                                if type(other.exp) == int:
+                                    return False
+                                else: #other.type = mElement
+                                    #Temporary
+                                    return False
+                            else: #self.type = mElement
+                                if type(other.exp) == int:
+                                    #Temporary
+                                    return False
+                                else: #other.type = str
+                                    #Temporary
+                                    return False
                         
         else:
             return False
@@ -55,8 +73,8 @@ class mElement:
     def countable(self):
         pass
 
-element1 = mElement(base=4, den=4, exp="x")
-element2 = mElement(base=3, den=3, exp="x")
+element1 = mElement(base=4, den=4, exp=4)
+element2 = mElement(base=5, den=5, exp=4)
 
 print(element1 == element2)
-print(type(element1))
+#print(type(element1))
